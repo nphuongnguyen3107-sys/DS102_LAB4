@@ -15,12 +15,17 @@ clf.fit(X_train, y_train)
 
 # Dự đoán trên tập test
 y_pred = clf.predict(X_test)
+y_pred_train = clf.predict(X_train)
+y_pred_test = y_pred
 
 # Đánh giá kết quả
-print("\n" + "="*30)
-print("=== Random Forest Scratch ===")
-print("="*30)
-print(f"Accuracy Score: {accuracy_score(y_test, y_pred):.4f}")
-print(f"F1 Score (Macro): {f1_score(y_test, y_pred, average='macro'):.4f}")
-print(f"F1 Score (Weighted): {f1_score(y_test, y_pred, average='weighted'):.4f}")
+print("\n=== Training ===")
+print(f"Accuracy    : {accuracy_score(y_train, y_pred_train):.4f}")
+print(f"F1 macro    : {f1_score(y_train, y_pred_train, average='macro'):.4f}")
+print(f"F1 weighted : {f1_score(y_train, y_pred_train, average='weighted'):.4f}")
+
+print("\n=== Testing ===")
+print(f"Accuracy    : {accuracy_score(y_test, y_pred_test):.4f}")
+print(f"F1 macro    : {f1_score(y_test, y_pred_test, average='macro'):.4f}")
+print(f"F1 weighted : {f1_score(y_test, y_pred_test, average='weighted'):.4f}")
 
